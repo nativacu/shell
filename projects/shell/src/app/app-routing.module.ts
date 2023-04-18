@@ -1,10 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const APP_ROUTES: Routes = [
+    {
+      path: '',
+      component: AppComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'flights',
+      loadChildren: () => import('mdf1/Module').then(m => m.FlightsModule)
+    },
+];
